@@ -18,6 +18,112 @@
         </nav>
     </header>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes of the Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .quote {
+            font-style: italic;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #eaeaea;
+            border-left: 4px solid #666;
+        }
+        .links {
+            margin-top: 20px;
+        }
+        a {
+            display: block;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Quotes of the Day</h1>
+    
+    <div id="quote" class="quote"></div>
+    
+    <script>
+        // Array of quotes
+        const quotes = [
+            "The only limit to our realization of tomorrow is our doubts of today.",
+            "Life is 10% what happens to us and 90% how we react to it.",
+            "The best way to predict the future is to create it.",
+            "You are never too old to set another goal or to dream a new dream.",
+            "Success is not the key to happiness. Happiness is the key to success."
+        ];
+
+        // Prompt user for a number
+        let userNumber = prompt("Enter a number:");
+        if (userNumber !== null) {
+            userNumber = Number(userNumber);
+            // Calculate the modulus
+            const index = userNumber % 5;
+            // Display the quote based on the modulus
+            document.getElementById("quote").innerText = quotes[index];
+        }
+
+        // Array of favorite websites
+        const favoriteWebsites = [
+            "https://www.google.com",
+            "https://www.wikipedia.org",
+            "https://www.github.com"
+        ];
+
+        // Display the favorite websites
+        const linksDiv = document.createElement('div');
+        linksDiv.className = 'links';
+        linksDiv.innerHTML = "<h2>Favorite Websites</h2>";
+        favoriteWebsites.forEach(url => {
+            const link = document.createElement('a');
+            link.href = url;
+            link.textContent = url;
+            linksDiv.appendChild(link);
+        });
+        document.body.appendChild(linksDiv);
+
+        // Prompt for user's favorite website
+        const userFavorite = prompt("Enter your favorite website URL:");
+        if (userFavorite) {
+            // Add the new favorite website
+            favoriteWebsites.push(userFavorite);
+            // Remove the first website from the array
+            favoriteWebsites.shift();
+        }
+
+        // Clear existing links and display the updated favorite websites
+        linksDiv.innerHTML = "<h2>Updated Favorite Websites</h2>";
+        favoriteWebsites.forEach(url => {
+            const link = document.createElement('a');
+            link.href = url;
+            link.textContent = url;
+            linksDiv.appendChild(link);
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+    
     <main>
         <section>
             <h2>About Me</h2>
