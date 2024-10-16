@@ -1,93 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trivia Game</title>
-    <style>
-        /* Basic styling for better visibility */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        #answers {
-            list-style-type: none;
-            padding: 0;
-        }
-        #answers li {
-            margin: 10px 0;
-        }
-    </style>
-</head>
-<body>
+// Sample questions array for demonstration
+let questions = [
+    ["What is the capital of France?", "Paris", "London", "Berlin"],
+    ["What is 2 + 2?", "4", "3", "5"],
+    ["What is the largest planet in our solar system?", "Jupiter", "Earth", "Mars"]
+];
 
-    <div id="prompt"></div>
-    <p id="question"></p>
-    <ul id="answers"></ul>
+function playGame() {
+    // Access the first question and post it in the HTML document
+    const questionElement = document.getElementById('question');
+    const answersElement = document.getElementById('answers');
+    
+    // Get the current question
+    const currentQuestion = questions[0];
+    questionElement.textContent = currentQuestion[0]; // Set question text
+    
+    // Remove the question from the array
+    questions.shift();
+    
+    // Access and remove the correct answer index
+    const correctAnswer = currentQuestion[1];
+    const correctIndex = 1; // The correct answer is always the second element (index 1)
+    
+    // Create a list of answers from remaining elements
+    const remainingAnswers = currentQuestion.slice(2); // Get remaining answers
+    const answersList = document.createElement('ul');
+    
+    // Format answers as list items
+    remainingAnswers.forEach((answer, index) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="#" onClick="checkAnswer(${index}, ${correctIndex})">${answer}</a>`;
+        answersList.appendChild(listItem);
+    });
+    
+    // Post the answers list in the HTML document
+    answersElement.innerHTML = ''; // Clear previous answers
+    answersElement.appendChild(answersList);
+    
+    // Add prompt for user
+    const promptElement = document.createElement('p');
+    promptElement.textContent = "Please click the best answer.";
+    answersElement.appendChild(promptElement);
+}
 
-    <script>
-        // Counter to track the questions
-        var counter = 0;
+// Example checkAnswer function
+function checkAnswer(selectedIndex, correctIndex) {
+    if (selectedIndex === correctIndex - 2) { // Adjust for the index of remaining answers
+        alert("Correct!");
+    } else {
+        alert("Wrong answer. Try again!");
+    }
+}
 
-        // Multi-dimensional array with trivia questions
-        var questions = [
-            ["What is the capital of France?", 0, "Paris", "London", "Berlin"],
-            ["What is 2 + 2?", 1, "3", "4", "5"],
-            ["What is the largest planet in our solar system?", 2, "Earth", "Jupiter", "Mars"]
-        ];
-
-        // Function to initialize the game
-        function playGame() {
-            if (questions.length === 0) {
-                document.getElementById('question').innerText = "No more questions!";
-                return;
-            }
-
-            // Access the first question
-            var currentQuestion = questions[0];
-            document.getElementById('question').innerText = currentQuestion[0];
-
-            // Remove question from array
-            questions.shift();
-
-            // Access the correct answer index
-            var correctIndex = currentQuestion[1];
-            var answerChoices = currentQuestion.slice(2);
-
-            // Display answer choices
-            var answersHtml = answerChoices.map((answer, index) => 
-                `<li onclick="checkAnswer(${index}, ${correctIndex})">${answer}</li>`
-            ).join('');
-
-            document.getElementById('answers').innerHTML = answersHtml;
-            counter++;
-            document.getElementById('prompt').innerHTML = "Click the best answer.";
-        }
-
-        // Function to check the answer
-        function checkAnswer(chosenIndex, correctIndex) {
-            if (chosenIndex === correctIndex) {
-                alert("Correct answer!");
-            } else {
-                alert("Incorrect answer. Try again!");
-            }
-
-            // Check if there are more questions
-            if (questions.length > 0) {
-                // Load the Play Game button to continue
-                document.getElementById('prompt').innerHTML = '<button onclick="playGame()">Play Next Question</button>';
-            } else {
-                // Load Restart Game button
-                document.getElementById('prompt').innerHTML = '<button onclick="location.reload()">Restart Game</button>';
-            }
-        }
-
-        // Load the Play Game button when the page loads
-        window.onload = function() {
-            document.getElementById('prompt').innerHTML = '<button onclick="playGame()">Play Game</button>';
-        }
-    </script>
-</body>
-</html>
