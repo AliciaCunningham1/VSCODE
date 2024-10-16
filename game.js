@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Game</title>
+</head>
+<body>
+    <h1>Trivia Game</h1>
+    <p id="question"></p>
+    <div id="answers"></div>
+    <button onclick="playGame()">Next Question</button>
+
+    <script src="your-script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
 // Sample questions array for demonstration
 let questions = [
     ["What is the capital of France?", "Paris", "London", "Berlin"],
