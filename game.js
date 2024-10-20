@@ -1,52 +1,57 @@
-// Sample questions array for demonstration
-let questions = [
-    ["What is the capital of France?", "Paris", "London", "Berlin"],
-    ["What is 2 + 2?", "4", "3", "5"],
-    ["What is the largest planet in our solar system?", "Jupiter", "Earth", "Mars"]
+// Multi-dimensional array with trivia questions
+var questions = [
+    ["What is the capital of France?", 0, "Berlin", "Madrid", "Paris"],
+    ["What is 2 + 2?", 2, "3", "4", "5"],
+    ["What is the largest planet in our solar system?", 1, "Earth", "Jupiter", "Mars"]
 ];
 
+// Counter to track the current question index
+var count = 0;
+
+// Function to initialize the game
 function playGame() {
-    // Access the first question and post it in the HTML document
-    const questionElement = document.getElementById('question');
-    const answersElement = document.getElementById('answers');
-    
-    // Get the current question
-    const currentQuestion = questions[0];
-    questionElement.textContent = currentQuestion[0]; // Set question text
-    
+    // Check if there are no more questions
+    if (count >= questions.length) {
+        document.getElementById('question').innerHTML = "Game Over! No more questions.";
+        document.getElementById('answers').innerHTML = "";
+        return;
+    }
+
+    // Access the current question and its details
+    var currentQuestion = questions[count];
+    var questionText = currentQuestion[0];
+    var correctIndex = currentQuestion[1];
+
+    // Display the question
+    document.getElementById('question').innerHTML = questionText;
+
     // Remove the question from the array
     questions.shift();
-    
-    // Access and remove the correct answer index
-    const correctAnswer = currentQuestion[1];
-    const correctIndex = 1; // The correct answer is always the second element (index 1)
-    
-    // Create a list of answers from remaining elements
-    const remainingAnswers = currentQuestion.slice(2); // Get remaining answers
-    const answersList = document.createElement('ul');
-    
-    // Format answers as list items
-    remainingAnswers.forEach((answer, index) => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="#" onClick="checkAnswer(${index}, ${correctIndex})">${answer}</a>`;
-        answersList.appendChild(listItem);
-    });
-    
-    // Post the answers list in the HTML document
-    answersElement.innerHTML = ''; // Clear previous answers
-    answersElement.appendChild(answersList);
-    
-    // Add prompt for user
-    const promptElement = document.createElement('p');
-    promptElement.textContent = "Please click the best answer.";
-    answersElement.appendChild(promptElement);
+
+    // Prepare the answers
+    var answerList = "";
+    for (var i = 2; i < currentQuestion.length; i++) {
+        answerList += `<li onclick="checkAnswer(${i - 2}, ${correctIndex})">${currentQuestion[i]}</li>`;
+    }
+
+    // Display the answers
+    document.getElementById('answers').innerHTML = answerList;
+    document.getElementById('answers').insertAdjacentHTML('beforeend', "<p>Click the best answer!</p>");
 }
 
-// Example checkAnswer function
+// Function to check the answer
 function checkAnswer(selectedIndex, correctIndex) {
-    if (selectedIndex === correctIndex - 2) { // Adjust for the index of remaining answers
+    if (selectedIndex === correctIndex) {
         alert("Correct!");
     } else {
         alert("Wrong answer. Try again!");
     }
+
+    // Move to the next question
+    count++;
+    playGame();
 }
+
+// Dynamically create the Play Game button
+document.getElementById('prompt').innerHTML = '<button onclick="playGame()">Play Game</button>';
+
