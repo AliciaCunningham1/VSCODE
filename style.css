@@ -1,15 +1,7 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
+.pic {
+    border-bottom: thin dashed darkgreen;
 }
 
-h1 {
-    color: #333;
-}
-
-#scoreDisplay {
-    font-size: 20px;
-    color: #333;
-    margin-top: 20px;
+.imgdiv {
+    position: absolute;
 }
