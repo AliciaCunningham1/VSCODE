@@ -1,3 +1,16 @@
+#rose {
+  position: absolute;
+  right: -100px; /* Position it off-screen initially */
+  top: 20px;
+  opacity: 0;  /* Initially hidden */
+}
+
+#container {
+  position: relative; /* Make sure the container is positioned relative */
+}
+
+
+
 #newSignup {
   display: none;
 }
