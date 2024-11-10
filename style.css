@@ -1,18 +1,4 @@
-#pltTitle {
-  color: #07a;
+#newSignup {
+  display: none;
 }
 
-.botanic {
-  color: darkgreen;
-  font-style: italic;
-}
-
-.col {
-  width: 20em;
-  padding: 1em;
-  float: left;
-}
-
-footer {
-  clear: both;
-}
