@@ -18,5 +18,22 @@ $(document).ready(function() {
     }
   });
 });
+$(document).ready(function() {
+  // Slogan hover effects
+  $('#slogan').hover(
+    // Onmouseover
+    function() {
+      $(this).fadeOut(400, 'linear', function() {
+        $(this).text('Hand Picked Just for You').fadeIn(600, 'swing');
+      });
+    },
+    // Onmouseout
+    function() {
+      $(this).fadeOut(200, 'swing', function() {
+        $(this).text('The Power of Flowers').fadeIn(600, 'linear');
+      });
+    }
+  );
+});
 
 
