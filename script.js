@@ -33,6 +33,23 @@ $(document).ready(function() {
         $(this).text('The Power of Flowers').fadeIn(600, 'linear');
       });
     }
+
+    $(document).ready(function() {
+  // Form submission event
+  $('#signupForm').submit(function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Display the alert message
+    alert('Thank you for registering');
+
+    // Hide the newsSignup form
+    $('#newSignup').slideUp();
+
+    // Fade the signup link to 30% opacity
+    $('#signupLink').fadeTo(400, 0.3);  // 400ms for the fade effect
+  });
+});
+
   );
 });
 
