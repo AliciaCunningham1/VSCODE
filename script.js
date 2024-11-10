@@ -35,5 +35,25 @@ $(document).ready(function() {
         const keyPressed = String.fromCharCode(e.which).toLowerCase();
         window.location = '#' + keyPressed; // Jump to the corresponding flower ID
     });
+
+    // show flowers
+    $('.pic').hover(function(evt) {
+        // ID
+        var imgId = '#' + $(this).attr('title') + 'Img';
+
+        // x+y
+        var x = evt.pageX + 150; 
+        var y = evt.pageY;
+
+        $(imgId).css({
+            top: y + 'px',
+            left: x + 'px',
+            position: 'absolute' 
+        }).show();
+    }, function() {
+        // hide on mouseout
+        var imgId = '#' + $(this).attr('title') + 'Img'; 
+        $(imgId).hide(); 
+    });
 });
 
