@@ -100,6 +100,64 @@
   <label for="state">State:</label>
   <select id="state" name="state">
     <option value="">Select State</option>
+
+
+<section id="about">
+    <h1>About Me</h1>
+    <p>Hello! My name is Alicia Cunningham, and I am a student learning web development. In this class, I have learned to build websites using HTML, CSS, JavaScript, and jQuery. I've gained hands-on experience in designing web pages, applying styling, and making them interactive with scripts.</p>
+    
+    <p>This class has taught me about the importance of usability and accessibility in web design. I now understand how to structure a page with HTML5, style it with external CSS, and make it interactive with JavaScript and jQuery effects. These skills are essential as I work towards my goal of becoming a full-stack web developer.</p>
+</section>
+
+<section id="technologies">
+    <h2>Technologies & Methods</h2>
+    <ul>
+        <li><strong>HTML5:</strong> Used for creating the structure and layout of web pages.</li>
+        <li><strong>CSS3:</strong> Applied for styling, layouts, and responsiveness.</li>
+        <li><strong>JavaScript:</strong> Created custom functions to add interactivity to the website.</li>
+        <li><strong>jQuery:</strong> Utilized for creating animations and effects on the page.</li>
+        <li><strong>Version Control (Git):</strong> Used Git for managing and tracking changes to the code.</li>
+    </ul>
+</section>
+<section id="goals">
+    <h2>How This Class Helps My Professional Goals</h2>
+    <p>Through this class, I’ve developed the technical foundation I need to pursue a career in web development. My goal is to become proficient in both front-end and back-end technologies. This class has helped me understand the basics of web design and development, and now I’m ready to dive deeper into more advanced frameworks and technologies such as React.js, Node.js, and server-side development.</p>
+</section>
+<section id="assignments">
+    <h2>My Assignments</h2>
+    <ul>
+        <li><a href="assignment1.html">Assignment 1 - Introduction to HTML</a></li>
+        <li><a href="assignment2.html">Assignment 2 - Styling with CSS</a></li>
+        <li><a href="assignment3.html">Assignment 3 - JavaScript Functions</a></li>
+        <li><a href="assignment4.html">Assignment 4 - jQuery Effects</a></li>
+    </ul>
+</section>
+<script>
+    function changeContent() {
+        document.getElementById("intro").innerHTML = "Thank you for visiting my website!";
+    }
+</script>
+<button onclick="changeContent()">Click me for a message</button>
+<p id="intro">Welcome to my About Us page!</p>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("section").fadeIn(2000);  // Fades in all sections over 2 seconds
+    });
+</script>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="assignments.html">Assignments</a></li>
+    </ul>
+</nav>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+	  
     <!-- Add options dynamically
 
 	    
